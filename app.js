@@ -1,10 +1,13 @@
+var express=require('express'),
+app=express();
 
-var server = require('http');
 
-server.createServer(function(req, res){
+app.get('/', function(req, res){
+    res.send("Welcome")
+})
 
-    res.write('Hello World!');
-    res.end();
-}).listen(8080, function(data){
-    console.log("server is connected")
-});
+
+app.use('/login', require('./routes'))
+
+app.listen(8090)
+module.exports=app;
